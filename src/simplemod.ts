@@ -1,7 +1,7 @@
 //always subscribe to ready event and implement widget related code
 //inside callback function , it is the best practice while developing widgets
 JFCustomWidget.subscribe("ready", function () {
-  const label = JFCustomWidget.getWidgetSetting("ModDateString");
+  const label = JFCustomWidget.getWidgetSetting("DateString");
   const lt = document.getElementById("labelText") as HTMLElement;
   lt.innerHTML = label;
   //subscribe to form submit event
