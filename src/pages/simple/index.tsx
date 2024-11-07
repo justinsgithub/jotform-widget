@@ -1,48 +1,11 @@
 import Head from "next/head";
-import Link from "next/link";
+// import Link from "next/link";
 import Script from "next/script";
-
-import { api } from "~/utils/api";
-
-const func = () => {
-  //always subscribe to ready event and implement widget related code
-  //inside callback function , it is the best practice while developing widgets
-  // JFCustomWidget.subscribe("ready", function () {
-  //   const label = JFCustomWidget.getWidgetSetting("QuestionLabel");
-  //   document.getElementById("labelText").innerHTML = label;
-  //   //subscribe to form submit event
-  //   JFCustomWidget.subscribe("submit", function () {
-  //     const msg = {
-  //       //you should valid attribute to data for JotForm
-  //       //to be able to use youw widget as required
-  //       valid: true,
-  //       value: document.getElementById("userInput").value,
-  //     };
-  //     // send value to JotForm
-  //     JFCustomWidget.sendSubmit(msg);
-  //   });
-  // });
-  JFCustomWidget.subscribe("ready", function () {
-    const label = JFCustomWidget.getWidgetSetting("QuestionLabel");
-    console.log(label);
-    // document.getElementById("labelText").innerHTML = label;
-    //subscribe to form submit event
-    JFCustomWidget.subscribe("submit", function () {
-      const msg = {
-        //you should valid attribute to data for JotForm
-        //to be able to use youw widget as required
-        valid: true,
-        value: "user input", //document.getElementById("userInput").value,
-      };
-      // send value to JotForm
-      JFCustomWidget.sendSubmit(msg);
-    });
-  });
-};
+import { useState } from "react";
 
 export default function Home() {
-  const hello = api.post.hello.useQuery({ text: "from tRPC" });
-
+  const [lt, setLT] = useState("");
+  const [val, setValue] = useState("");
   return (
     <>
       <Head>
@@ -55,10 +18,38 @@ export default function Home() {
         strategy="lazyOnload"
         onLoad={() => {
           console.log(`script loaded correctly, window.FB has been populated`);
-          func();
+          //always subscribe to ready event and implement widget related code
+          //inside callback function , it is the best practice while developing widgets
+          JF.subscribe("ready", function () {
+            const label = JF.getWidgetSetting("QuestionLabel");
+
+            setLT(label);
+            //subscribe to form submit event
+            JF.subscribe("submit", function () {
+              const msg = {
+                //you should valid attribute to data for JotForm
+                //to be able to use youw widget as required
+                valid: true,
+                value: val,
+              };
+
+              // send value to JotForm
+              JF.sendSubmit(msg);
+            });
+          });
         }}
       />
-      <main>this is a test</main>
+      <main>
+        <div id="main">
+          <h3>This is my first widget.</h3>
+          <span>{lt}</span>
+          <input
+            type="text"
+            value={val}
+            onChange={(e) => setValue(e.target.value)}
+          />
+        </div>
+      </main>
     </>
   );
 }
