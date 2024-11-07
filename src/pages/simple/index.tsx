@@ -4,8 +4,8 @@ import Script from "next/script";
 import { useState } from "react";
 
 export default function Home() {
-  const [lt, setLT] = useState("");
-  const [val, setValue] = useState("");
+  const [lt, setLT] = useState("test label");
+  const [val, setValue] = useState("test val");
   return (
     <>
       <Head>
@@ -20,14 +20,16 @@ export default function Home() {
           console.log(`script loaded correctly, window.FB has been populated`);
           //always subscribe to ready event and implement widget related code
           //inside callback function , it is the best practice while developing widgets
-          const JF = window.JFCustomWidget;
 
-          JF.subscribe("ready", function () {
-            const label = JF.getWidgetSetting("QuestionLabel");
+          window.JFCustomWidget.subscribe("ready", function () {
+            console.log("JF ready");
+            const label =
+              window.JFCustomWidget.getWidgetSetting("QuestionLabel");
 
             setLT(label);
             //subscribe to form submit event
-            JF.subscribe("submit", function () {
+            window.JFCustomWidget.subscribe("submit", function () {
+              console.log("JF submit subscribe function");
               const msg = {
                 //you should valid attribute to data for JotForm
                 //to be able to use youw widget as required
@@ -36,7 +38,7 @@ export default function Home() {
               };
 
               // send value to JotForm
-              JF.sendSubmit(msg);
+              window.JFCustomWidget.sendSubmit(msg);
             });
           });
         }}
