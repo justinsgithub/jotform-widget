@@ -1,6 +1,6 @@
 type CoreEvents = "ready" | "submit";
 
-interface JFCustomWidget {
+interface TypeJF {
   subscribe: (event: CoreEvents, callback: () => void) => Void;
   sendData: (data: string) => void;
   sendSubmit: (data: { valid: boolean; value: string }) => void;
@@ -10,4 +10,6 @@ interface JFCustomWidget {
   replaceWidget: (inputType: string, height: number) => void;
 }
 
-declare const JF: JFCustomWidget;
+interface Window {
+  JFCustomWidget: TypeJF;
+}

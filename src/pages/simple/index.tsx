@@ -20,6 +20,8 @@ export default function Home() {
           console.log(`script loaded correctly, window.FB has been populated`);
           //always subscribe to ready event and implement widget related code
           //inside callback function , it is the best practice while developing widgets
+          const JF = window.JFCustomWidget;
+
           JF.subscribe("ready", function () {
             const label = JF.getWidgetSetting("QuestionLabel");
 
