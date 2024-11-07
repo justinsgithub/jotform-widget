@@ -1,7 +1,9 @@
 import Head from "next/head";
 // import Link from "next/link";
 import Script from "next/script";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+let ran = false;
 
 export default function Home() {
   const [lt, setLT] = useState("test label");
@@ -9,25 +11,32 @@ export default function Home() {
   //always subscribe to ready event and implement widget related code
   //inside callback function , it is the best practice while developing widgets
 
-  window.JFCustomWidget.subscribe("ready", function () {
-    console.log("JF ready");
-    const label = window.JFCustomWidget.getWidgetSetting("QuestionLabel");
+  if (typeof window !== "undefined") {
+    if (!ran) {
+      window.JFCustomWidget.subscribe("ready", function () {
+        ran = true;
 
-    setLT(label);
-    //subscribe to form submit event
-    window.JFCustomWidget.subscribe("submit", function () {
-      console.log("JF submit subscribe function");
-      const msg = {
-        //you should valid attribute to data for JotForm
-        //to be able to use youw widget as required
-        valid: true,
-        value: val,
-      };
+        console.log("JF ready");
+        const label = window.JFCustomWidget.getWidgetSetting("QuestionLabel");
 
-      // send value to JotForm
-      window.JFCustomWidget.sendSubmit(msg);
-    });
-  });
+        setLT(label);
+        //subscribe to form submit event
+        window.JFCustomWidget.subscribe("submit", function () {
+          console.log("JF submit subscribe function");
+          const msg = {
+            //you should valid attribute to data for JotForm
+            //to be able to use youw widget as required
+            valid: true,
+            value: val,
+          };
+
+          // send value to JotForm
+          window.JFCustomWidget.sendSubmit(msg);
+        });
+      });
+    }
+  }
+
   return (
     <>
       <Head>
