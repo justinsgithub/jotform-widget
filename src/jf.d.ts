@@ -10,6 +10,8 @@ interface TypeJF {
   replaceWidget: (inputType: string, height: number) => void;
 }
 
-interface Window {
-  JFCustomWidget: TypeJF;
-}
+// interface Window {
+//   JFCustomWidget: TypeJF;
+// }
+
+declare const JFCustomWidget: TypeJF;

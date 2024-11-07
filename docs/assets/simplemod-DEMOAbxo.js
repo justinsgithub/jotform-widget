@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-B5Qt9EMX.js";JFCustomWidget.subscribe("ready",function(){const t=JFCustomWidget.getWidgetSetting("ModDateString"),e=document.getElementById("labelText");e.innerHTML=t,JFCustomWidget.subscribe("submit",function(){const u={valid:!0,value:document.getElementById("userInput").value};JFCustomWidget.sendSubmit(u)})});
