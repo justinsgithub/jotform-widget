@@ -1,3 +1,13 @@
+import { formatDistance, subDays } from "date-fns";
+
+const datetest = formatDistance(subDays(new Date(), 3), new Date(), {
+  addSuffix: true,
+}); //=> "3 days ago"
+console.log(datetest);
+
+const h3 = document.getElementById("h3") as HTMLElement;
+h3.innerHTML = datetest;
+
 //always subscribe to ready event and implement widget related code
 //inside callback function , it is the best practice while developing widgets
 JFCustomWidget.subscribe("ready", function () {
