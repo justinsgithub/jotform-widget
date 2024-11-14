@@ -2,8 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 console.log("About outside");
+console.log("About.tsx outside window.JFCustomWidget", window.JFCustomWidget);
+console.log("About.tsx outside JFCustomWidget", JFCustomWidget);
 const About: React.FC = () => {
   console.log("About inside");
+  console.log("About.tsx inside window.JFCustomWidget", window.JFCustomWidget);
+  console.log("About.tsx inside JFCustomWidget", JFCustomWidget);
 
   const wd = window.JFCustomWidget.getWidgetData();
   console.log("widgedata", wd);

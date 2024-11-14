@@ -20,4 +20,4 @@ declare interface Window {
   JFid: string;
 }
 
-// declare const JFCustomWidget: TypeJF;
+declare const JFCustomWidget: TypeJF;
