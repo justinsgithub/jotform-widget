@@ -1,8 +1,12 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import About from './pages/About'
-import Contact from './pages/Contact'
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+
+const { formID } = window.JFCustomWidget.getWidgetData();
+window.JFid = formID;
+console.log("JFid", window.JFid);
 
 const App: React.FC = () => {
   return (
@@ -13,7 +17,7 @@ const App: React.FC = () => {
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
-  )
-}
+  );
+};
 
-export default App
+export default App;
