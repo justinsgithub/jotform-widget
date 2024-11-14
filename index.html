@@ -10,19 +10,23 @@
   <body>
     <div id="root"></div>
     <script type="text/javascript">
-    console.log("index.tsx")
-    console.log("index.tsx window.JFCustomWidget", window.JFCustomWidget)
-    console.log("index.tsx JFCustomWidget", JFCustomWidget)
+    console.log("/index.html")
+    console.log("/index.html JFCustomWidget", JFCustomWidget)
 
 JFCustomWidget.subscribe("ready", function () {
-      console.log("READY")
-      const d = JFCustomWidget.getWidgetSetting("date");
-      console.log("date", d)
+      console.log("/index.html READY")
+      const d = JFCustomWidget.getWidgetSetting("index.html date");
+      console.log("index.html date", d)
+      const settings = JFCustomWidget.getWidgetSettings();
+      console.log("index.html settings", settings)
+      const wd = JFCustomWidget.getWidgetData();
+      console.log("index.html widgedata", wd);
 
   // const lt = document.getElementById("labelText") as HTMLElement;
   // lt.innerHTML = label;
   //subscribe to form submit event
   JFCustomWidget.subscribe("submit", function () {
+        console.log("SUBMITTING")
     // const ui = document.getElementById("userInput") as HTMLInputElement;
     const msg = {
       //you should valid attribute to data for JotForm
