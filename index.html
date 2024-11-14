@@ -14,7 +14,10 @@
     console.log("WIDGE TEST", JFCustomWidget)
 
 JFCustomWidget.subscribe("ready", function () {
-  // const label = JFCustomWidget.getWidgetSetting("DateString");
+      console.log("READY")
+      const d = JFCustomWidget.getWidgetSetting("date");
+      console.log("date", d)
+
   // const lt = document.getElementById("labelText") as HTMLElement;
   // lt.innerHTML = label;
   //subscribe to form submit event
