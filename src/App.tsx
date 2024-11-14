@@ -4,8 +4,10 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 
-const { formID } = window.JFCustomWidget.getWidgetData();
-window.JFid = formID;
+const wd = window.JFCustomWidget.getWidgetData();
+console.log("widgedata", wd);
+console.log("App.tsx");
+window.JFid = wd.formID;
 console.log("JFid", window.JFid);
 
 const App: React.FC = () => {

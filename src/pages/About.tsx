@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+console.log("About outside");
 const About: React.FC = () => {
+  console.log("About inside");
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
       <h1 className="text-4xl font-bold mb-4">About Us</h1>
