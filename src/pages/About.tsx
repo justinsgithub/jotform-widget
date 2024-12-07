@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-console.log("About outside");
-console.log("About.tsx outside JFCustomWidget", JFCustomWidget);
 const About: React.FC = () => {
-  console.log("About inside");
   console.log("About.tsx inside JFCustomWidget", JFCustomWidget);
 
   JFCustomWidget.subscribe("ready", function () {
